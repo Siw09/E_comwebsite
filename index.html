@@ -33,7 +33,7 @@
           <circle cx="70" cy="70" r="70"></circle>
           <circle cx="70" cy="70" r="70" id="progress"></circle>
         </svg>
-        <div id="timer-text">12:00:00</div>
+        <div id="timer-text">4:00:00</div>
       </div>
       <p id="urgency-message" class="urgency"></p>
     </div>
@@ -64,7 +64,7 @@
   <section class="paiement">
     <div class="container">
       <h2>Formulaire de Paiement</h2>
-      <form id="paymentForm" onsubmit="return sendToWhatsApp()">
+      <form id="paymentForm">
         <input type="text" id="name" placeholder="Nom complet" required>
         <input type="email" id="email" placeholder="Adresse e-mail" required>
         <input type="tel" id="phone" placeholder="Numéro Mobile Money" required>
@@ -72,6 +72,7 @@
           <option value="">Méthode de paiement</option>
           <option value="MTN Money">MTN Money</option>
           <option value="Moov Money">Moov Money</option>
+          <option value="Wave">Celtiis Cash</option>
           <option value="Wave">Wave</option>
         </select>
         <img src="https://cdn-icons-png.flaticon.com/512/1041/1041916.png" alt="Paiement Sécurisé" class="paiement-img">
@@ -100,6 +101,66 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+document.getElementById("paymentForm").addEventListener("submit", function(e){
+    e.preventDefault(); // Empêche l'envoi classique du formulaire
+    sendToWhatsApp();   // Lance la redirection WhatsApp
+});
+
+function sendToWhatsApp() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const method = document.getElementById("method").value;
+
+    const message = `Salut, je viens d'acheter le pack digital. Voici mes infos :
+Nom : ${name}
+Email : ${email}
+Mobile Money : ${phone}
+Méthode : ${method}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/2290190900910?text=${encodedMessage}`;
+
+    showPopup(); // Montre d'abord le popup
+    
+    // Attendre 2 secondes avant d'ouvrir WhatsApp
+    setTimeout(function(){
+      window.open(whatsappURL, '_blank');
+    }, 2000); // 2000 millisecondes = 2 secondes
+
+    return false;
+}
+
+function showPopup() {
+    document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+    // Countdown Timer sécurisé
+  let countdown = 4 * 60 * 60; // 4h en secondes
+  const countdownElement = document.getElementById('countdown');
+
+  function updateCountdown() {
+    const hours = Math.floor(countdown / 3600);
+    const minutes = Math.floor((countdown % 3600) / 60);
+    const seconds = countdown % 60;
+    countdownElement.innerHTML = `${hours}h ${minutes}m ${seconds}s`;
+    if (countdown > 0) {
+      countdown--;
+      setTimeout(updateCountdown, 1000);
+    } else {
+      countdownElement.innerHTML = "Offre expirée";
+    }
+  }
+
+  // Lance le compte à rebours seulement quand la page est prête
+  updateCountdown();
+});
+  </script>
 
 </body>
 </html>
