@@ -158,4 +158,48 @@
       padding: 12px 24px;
     }
   }
-  
+  .timer {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.circle-timer {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 30px auto;
+}
+
+.circle-timer svg {
+  width: 150px;
+  height: 150px;
+  transform: rotate(-90deg);
+}
+
+.circle-timer circle {
+  fill: none;
+  stroke-width: 10;
+  stroke: #e6e6e6;
+}
+
+#progress {
+  stroke: #007bff;
+  stroke-dasharray: 440;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear;
+}
+
+#timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.urgency {
+  color: red;
+  font-weight: bold;
+  margin-top: 20px;
+}
