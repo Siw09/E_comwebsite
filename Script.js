@@ -1,18 +1,25 @@
 const progressCircle = document.getElementById('progress');
 const timerText = document.getElementById('timer-text');
 const urgencyMessage = document.getElementById('urgency-message');
+const payButton = document.getElementById('payButton');
 
-// Définir la durée initiale : 12h
-let duration = 12 * 60 * 60; // en secondes
+let initialDuration = 12 * 60 * 60; // 12 heures
+let duration = initialDuration;
 
 function updateTimer() {
-  let hours = Math.floor(duration / 3600);
-  let minutes = Math.floor((duration % 3600) / 60);
-  let seconds = duration % 60;
+  if (duration <= 0) {
+    // Redémarre à 20 minutes
+    duration = 20 * 60;
+    initialDuration = 20 * 60;
+  }
 
-  timerText.textContent = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+  const hours = Math.floor(duration / 3600);
+  const minutes = Math.floor((duration % 3600) / 60);
+  const seconds = duration % 60;
 
-  const dashOffset = 440 - (440 * ((12 * 60 * 60 - duration) / (12 * 60 * 60)));
+  timerText.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+  const dashOffset = 440 - (440 * ((initialDuration - duration) / initialDuration));
   progressCircle.style.strokeDashoffset = dashOffset;
 
   if (hours === 0 && minutes <= 30) {
@@ -21,17 +28,17 @@ function updateTimer() {
     urgencyMessage.textContent = "";
   }
 
-  if (duration > 0) {
-    duration--;
-  } else {
-    // Si terminé, redémarre dans 20 minutes
-    duration = 20 * 60;
+  if (hours === 0 && minutes <= 5 && seconds === 0) {
+    // Son d'alerte quand il reste 5 minutes
+    alert("Attention, plus que 5 minutes !");
   }
+
+  duration--;
 }
 
 setInterval(updateTimer, 1000);
 
-// Script WhatsApp (déjà existant)
+// Script WhatsApp (formulaire)
 function sendToWhatsApp() {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
