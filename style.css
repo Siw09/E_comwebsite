@@ -203,3 +203,38 @@
   font-weight: bold;
   margin-top: 20px;
 }
+
+.header-flex {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+}
+
+.banniere img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.liste-offre img {
+  width: 30px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.paiement-img {
+  width: 100px;
+  margin: 20px auto;
+  display: block;
+}
+
+.confiance img {
+  width: 200px;
+  margin: 30px auto;
+  display: block;
+}
