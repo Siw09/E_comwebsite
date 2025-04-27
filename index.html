@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pack Outils Digitaux - Promo Limitée</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Obtiens plus de 20 millions de ressources digitales pour booster ton business</h1>
+      <p>Pack complet : Graphisme, Vidéo, Ebooks, Thèmes WordPress, et bien plus.</p>
+      <a href="#achat" class="cta-button">Profiter de l'offre maintenant</a>
+    </div>
+  </header>
+
+  <section class="offre">
+    <div class="container">
+      <h2>Ce que tu vas recevoir</h2>
+      <ul>
+        <li>+3 millions de fichiers design (Mockups, PSD, Logos...)</li>
+        <li>+2 millions de designs de t-shirts</li>
+        <li>+700 000 ressources vidéo et effets sonores</li>
+        <li>+12 millions d’articles et +350 000 ebooks PLR</li>
+        <li>Thèmes & Plugins WordPress, Apps, Scripts, etc.</li>
+        <li>Pack spécial ChatGPT & IA</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="prix" id="achat">
+    <div class="container">
+      <h2>Prix Spécial : Seulement 2 000 FCFA</h2>
+      <p class="strikethrough">Au lieu de 67 000 FCFA</p>
+      <p>Offre limitée, paiement Mobile Money</p>
+    </div>
+  </section>
+
+  <section class="compteur">
+    <div class="container">
+      <h2>Offre expire dans :</h2>
+      <div id="countdown"></div>
+    </div>
+  </section>
+
+  <section class="paiement">
+    <div class="container">
+      <h2>Formulaire de Paiement</h2>
+      <form id="paymentForm" onsubmit="return sendToWhatsApp()">
+        <input type="text" id="name" placeholder="Nom complet" required>
+        <input type="email" id="email" placeholder="Adresse e-mail" required>
+        <input type="tel" id="phone" placeholder="Numéro Mobile Money" required>
+        <select id="method" required>
+          <option value="">Méthode de paiement</option>
+          <option value="MTN Money">MTN Money</option>
+          <option value="Moov Money">Moov Money</option>
+          <option value="Wave">Wave</option>
+        </select>
+        <button type="submit" class="cta-button">Valider le paiement</button>
+      </form>
+    </div>
+  </section>
+
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <p>Merci ! Nous avons reçu votre demande. Un conseiller vous contactera rapidement.</p>
+      <button onclick="closePopup()">Fermer</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>Support 24h/7 - Contact WhatsApp : +229 XX XX XX XX</p>
+    </div>
+  </footer>
+
+  <script>
+    function sendToWhatsApp() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const method = document.getElementById("method").value;
+
+      const message = `Salut, je viens d'acheter le pack digital. Voici mes infos :
+Nom : ${name}
+Email : ${email}
+Mobile Money : ${phone}
+Méthode : ${method}`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/2290190900910?text=${encodedMessage}`;
+
+      window.open(whatsappURL, '_blank');
+      showPopup();
+      return false;
+    }
+
+    function showPopup() {
+      document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    // Countdown Timer
+    let countdown = 12 * 60 * 60; // 12 hours in seconds
+    const countdownElement = document.getElementById('countdown');
+
+    function updateCountdown() {
+      const hours = Math.floor(countdown / 3600);
+      const minutes = Math.floor((countdown % 3600) / 60);
+      const seconds = countdown % 60;
+      countdownElement.innerHTML = `${hours}h ${minutes}m ${seconds}s`;
+      if (countdown > 0) {
+        countdown--;
+        setTimeout(updateCountdown, 1000);
+      } else {
+        countdownElement.innerHTML = "Offre expirée";
+      }
+    }
+    updateCountdown();
+  </script>
+
+</body>
+</html>
+
