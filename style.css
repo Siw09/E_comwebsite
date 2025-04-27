@@ -1,164 +1,197 @@
-/* RESET */
+/* RESET DE BASE */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* GENERAL */
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 0;
-  }
-  
-  /* HEADER */
-  header {
-    background: linear-gradient(to right, #007bff, #0056b3);
-    color: white;
-    text-align: center;
-    padding: 80px 20px;
-  }
-  
-  header h1 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-  }
-  
-  header p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-  }
-  
-  .cta-button {
-    background-color: #ffcc00;
-    color: #000;
-    padding: 15px 30px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-  
-  .cta-button:hover {
-    background-color: #e6b800;
-  }
-  
-  /* SECTIONS */
-  section {
-    background: white;
-    margin: 20px 0;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
-  }
-  
-  .offre h2,
-  .prix h2,
-  .compteur h2 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #0056b3;
-  }
-  
-  .offre ul {
-    list-style: disc;
-    padding-left: 40px;
-    font-size: 1.1rem;
-  }
-  
-  .prix {
-    text-align: center;
-  }
-  
-  .prix .strikethrough {
-    text-decoration: line-through;
-    color: red;
-    font-size: 1rem;
-  }
-  
-  .compteur {
-    text-align: center;
-    font-size: 1.5rem;
-    color: #e60000;
-  }
-  
-  /* FORMULAIRE */
-  .paiement form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 500px;
-    margin: auto;
-  }
-  
-  .paiement input,
-  .paiement select,
-  .paiement button {
-    padding: 12px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
-  
-  /* POPUP */
-  .popup {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-  }
-  
-  .popup-content {
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 400px;
-    margin: 100px auto;
-    text-align: center;
-  }
-  
-  .popup-content button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  /* FOOTER */
-  footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9rem;
-  }
-  
-  /* RESPONSIVE */
-  @media screen and (max-width: 768px) {
-    header h1 {
-      font-size: 1.5rem;
-    }
-  
-    .cta-button {
-      padding: 12px 24px;
-    }
-  }
-  .timer {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 0;
+}
+
+/* HEADER + LOGO */
+.header-flex {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+}
+
+header {
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: white;
+  text-align: left;
+  padding: 40px 20px;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2rem;
+}
+
+/* BANNIERE */
+.banniere img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* CTA BUTTON */
+.cta-button {
+  background-color: #ffcc00;
+  color: #000;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  display: inline-block;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover, #payButton:hover {
+  background-color: #e6b800;
+  transform: scale(1.05);
+}
+
+/* SECTIONS */
+section {
+  background: white;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.offre h2,
+.prix h2,
+.timer h2,
+.paiement h2,
+.confiance h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #0056b3;
+}
+
+/* LISTE OFFRE */
+.liste-offre {
+  list-style: none;
+  padding-left: 0;
+}
+
+.liste-offre li {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+}
+
+.liste-offre img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+/* PRIX */
+.prix {
+  text-align: center;
+}
+
+.prix .strikethrough {
+  text-decoration: line-through;
+  color: red;
+  font-size: 1rem;
+}
+
+/* FORMULAIRE */
+.paiement form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.paiement input,
+.paiement select,
+.paiement button {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.paiement-img {
+  width: 100px;
+  margin: 20px auto;
+  display: block;
+}
+
+/* CONFIANCE */
+.confiance img {
+  width: 200px;
+  margin: 30px auto;
+  display: block;
+}
+
+/* FOOTER */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+}
+
+/* POPUP */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.popup-content button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* TIMER */
+.timer {
   text-align: center;
   margin: 50px 0;
 }
@@ -204,37 +237,13 @@
   margin-top: 20px;
 }
 
-.header-flex {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
 
-.logo {
-  width: 80px;
-  height: auto;
-}
-
-.banniere img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.liste-offre img {
-  width: 30px;
-  vertical-align: middle;
-  margin-right: 10px;
-}
-
-.paiement-img {
-  width: 100px;
-  margin: 20px auto;
-  display: block;
-}
-
-.confiance img {
-  width: 200px;
-  margin: 30px auto;
-  display: block;
-}
+  .cta-button {
+    padding: 12px 24px;
+  }
+      }
