@@ -1,15 +1,14 @@
 const progressCircle = document.getElementById('progress');
 const timerText = document.getElementById('timer-text');
 const urgencyMessage = document.getElementById('urgency-message');
-const payButton = document.getElementById('payButton');
 
+// Timer principal
 let initialDuration = 12 * 60 * 60; // 12 heures
 let duration = initialDuration;
 
 function updateTimer() {
   if (duration <= 0) {
-    // Redémarre à 20 minutes
-    duration = 20 * 60;
+    duration = 20 * 60; // Redémarre à 20 minutes
     initialDuration = 20 * 60;
   }
 
@@ -29,7 +28,6 @@ function updateTimer() {
   }
 
   if (hours === 0 && minutes <= 5 && seconds === 0) {
-    // Son d'alerte quand il reste 5 minutes
     alert("Attention, plus que 5 minutes !");
   }
 
@@ -38,7 +36,7 @@ function updateTimer() {
 
 setInterval(updateTimer, 1000);
 
-// Script WhatsApp (formulaire)
+// Script pour envoyer le formulaire vers WhatsApp
 function sendToWhatsApp() {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
@@ -54,15 +52,13 @@ Méthode : ${method}`;
   const encodedMessage = encodeURIComponent(message);
   const whatsappURL = `https://wa.me/2290190900910?text=${encodedMessage}`;
 
+  window.open(whatsappURL, '_blank');
   showPopup();
-
-  setTimeout(() => {
-    window.open(whatsappURL, '_blank');
-  }, 3000);
 
   return false;
 }
 
+// Pop-up
 function showPopup() {
   document.getElementById("popup").style.display = "flex";
 }
